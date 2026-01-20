@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0f172a',
+                        'dark-surface': '#1e293b',
+                        'dark-card': '#334155',
+                        'blue-primary': '#3b82f6',
+                        'blue-secondary': '#2563eb',
+                        'blue-accent': '#60a5fa',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-bg text-gray-100 min-h-screen">
+    <header class="sticky top-0 z-50 bg-dark-surface/90 backdrop-blur border-b border-blue-primary/20">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between gap-4">
+                <a href="/" class="flex items-center gap-2 min-w-0">
+                    <span class="text-3xl font-bold text-blue-accent whitespace-nowrap">🛍️ TechStore</span>
+                </a>
+
+                <div class="flex items-center gap-3">
+                    <a href="/cart.html" class="relative inline-flex items-center justify-center w-10 h-10 rounded-lg bg-dark-card hover:bg-blue-primary/15 border border-blue-primary/10 hover:border-blue-primary/30 transition-colors" aria-label="Cart">
+                        <!-- cart icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 rounded-full bg-blue-primary text-white text-xs font-bold flex items-center justify-center border border-dark-surface">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="hero text-center mb-4 py-5">
+            <h2 class="text-4xl md:text-5xl font-bold text-blue-accent mb-3">Welcome to TechStore</h2>
+            <p class="text-lg text-gray-400">Discover the latest tech products at amazing prices</p>
+        </section>
+
+        <section class="products-section mb-16">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-3xl font-bold text-blue-accent">Our Products</h2>
+                    <div class="loading text-blue-accent font-semibold hidden" id="loading">Loading...</div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label for="categoryFilter" class="text-sm text-gray-400">Category</label>
+                    <select id="categoryFilter" class="bg-dark-card text-gray-100 border border-blue-primary/15 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary/40">
+                        <option value="all">All</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <section class="users-section mb-16">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-blue-accent">Our Users</h2>
+                <button class="btn-secondary px-6 py-2 rounded-lg bg-blue-primary text-white font-semibold hover:bg-blue-secondary transition-colors" id="loadUsersBtn">Load Users</button>
+            </div>
+            <div class="users-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="usersContainer">
+                <!-- Users will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark-surface border-t border-blue-primary/20 mt-16">
+        <div class="container mx-auto px-4 py-6">
+            <p class="text-center text-gray-400">&copy; 2026 TechStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
